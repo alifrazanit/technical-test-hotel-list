@@ -1,0 +1,9 @@
+.footer{
+    margin-top: 3rem;
+    text-align: center;
+    background: #F5F6FA;
+    padding: 1rem;
+    p{
+        margin: 0;
+    }
+}

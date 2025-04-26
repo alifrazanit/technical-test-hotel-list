@@ -1,0 +1,14 @@
+<div class="row hotel-web">
+    <div class="col">
+        <h1 class="label-recomendation">Recomendations</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <p-carousel [value]="products" [numVisible]="1" [numScroll]="1" [circular]="false">
+            <ng-template let-product #item>
+                <app-card />
+            </ng-template>
+        </p-carousel>
+    </div>
+</div>
