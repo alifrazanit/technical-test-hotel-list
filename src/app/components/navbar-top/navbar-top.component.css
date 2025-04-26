@@ -1,0 +1,32 @@
+:host ::ng-deep .p-menubar {
+  background: #ffffff;
+  border-radius: 0px;
+  color: #222f3e;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 120px;
+  padding-right: 120px;
+}
+
+:host ::ng-deep .p-menubar .p-menubar-start .greetings {
+  margin: 0;
+}
+
+:host ::ng-deep .p-menubar .p-menubar-end {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+:host ::ng-deep .p-menubar .p-menubar-end .p-button-link {
+  color: #222f3e;
+}
+
+:host ::ng-deep .p-menubar .p-menubar-end .p-select {
+  width: 150px;
+  background-color: #ffffff;
+}
+
+:host ::ng-deep .p-menubar .p-menubar-end .p-select .p-select-label {
+  color: #222f3e;
+}
