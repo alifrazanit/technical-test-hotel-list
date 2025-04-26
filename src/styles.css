@@ -5,8 +5,10 @@ html,
 body {
   margin: 0;
   padding: 0;
+  background-color: #FFFFFF;
 }
 body {
   font-family: "Roboto", sans-serif;
   color: #222f3e;
 }
+

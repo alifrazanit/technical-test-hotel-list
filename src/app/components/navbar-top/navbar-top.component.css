@@ -1,11 +1,12 @@
 :host ::ng-deep .p-menubar {
-  background: #ffffff;
+  background: #f5f6fa;
   border-radius: 0px;
   color: #222f3e;
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 120px;
   padding-right: 120px;
+  border: none !important;
 }
 
 :host ::ng-deep .p-menubar .p-menubar-start .greetings {
@@ -29,4 +30,10 @@
 
 :host ::ng-deep .p-menubar .p-menubar-end .p-select .p-select-label {
   color: #222f3e;
+}
+
+@media (max-device-width: 800px) {
+  :host ::ng-deep .p-menubar {
+    padding: 0.5rem 0.85rem;
+  }
 }

@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { MenuItem } from 'primeng/api';
-import { MenubarModule } from 'primeng/menubar';
 
+import { MenubarModule } from 'primeng/menubar';
 import { CommonModule } from '@angular/common';
 import { SelectModule } from 'primeng/select';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -39,6 +38,8 @@ export class NavbarTopComponent implements OnInit {
       image: '/images/uk.png'
     }
   ];
+
+  constructor(){}
 
   ngOnInit(): void {
     this.initForm();
