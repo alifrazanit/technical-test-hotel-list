@@ -4,12 +4,14 @@ import { CardModule } from 'primeng/card';
 import { SelectModule } from 'primeng/select';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormGroup, FormControl } from '@angular/forms';
+import { ButtonModule } from 'primeng/button';
 @Component({
   selector: 'app-search-box',
   imports: [
     CardModule,
     SelectModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ButtonModule
   ],
   templateUrl: './search-box.component.html',
   styleUrl: './search-box.component.css'
@@ -27,7 +29,7 @@ export class SearchBoxComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-
+    this.initForm();
   }
 
   initForm() {

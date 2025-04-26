@@ -1,29 +1,39 @@
 <div class="search-box-container">
     <p-card class="search-box">
-       <div class="grid">
-        <div class="col">
-            <form [formGroup]="form">
-                <p-select [options]="destination" formControlName="destination" [editable]="true" optionLabel="name" class="w-full md:w-56">
-                    <ng-template #selectedItem let-selectedOption>
-                        <div class="flex items-center gap-2" *ngIf="selectedOption">
-                            <div>{{ selectedOption.name }}</div>
-                        </div>
-                    </ng-template>
-                    <ng-template let-country #item>
-                        <div class="flex items-center gap-2">
-                            <div>
-                                <p>{{ country.name }}</p>
-                                <p>{{ country.location }}</p>
-                            </div>
-                        </div>
-                    </ng-template>
-                    <ng-template #dropdownicon>
-                        <i class="pi pi-map-marker"></i>
-                    </ng-template>
-                </p-select>
-            </form>
+        <div class="row">
+            <div class="col">
+                <form [formGroup]="form">
+                    <div class="field">
+                        <label for="firstname1">Hotel or Destination</label>
+                        <p-select [options]="destination" formControlName="destination" [editable]="true"
+                            optionLabel="name" placeholder="Select a City" class="w-full md:w-56">
+                            <ng-template #selectedItem let-selectedOption>
+                                @if(selectedOption){
+                                <div class="flex items-center gap-2">
+                                    <div>{{ selectedOption.name }}</div>
+                                </div>
+                                }
+                            </ng-template>
+                            <ng-template let-country #item>
+                                <div class="flex items-center gap-2">
+                                    <div>
+                                        <p>{{ country.name }}</p>
+                                        <p>{{ country.location }}</p>
+                                    </div>
+                                </div>
+                            </ng-template>
+                            <ng-template #dropdownicon>
+                                <i class="pi pi-map-marker"></i>
+                            </ng-template>
+                        </p-select>
+                    </div>
+                </form>
+            </div>
         </div>
-       </div>
+        <div class="row">
+            <div class="col">
+                <p-button label="Find" severity="success" class="btn-filter"/>
+            </div>
+        </div>
     </p-card>
-    <div class="overlay"></div>
 </div>

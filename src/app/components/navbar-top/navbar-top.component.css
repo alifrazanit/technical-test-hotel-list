@@ -32,8 +32,21 @@
   color: #222f3e;
 }
 
-@media (max-device-width: 800px) {
+@media (max-device-width: 900px) {
   :host ::ng-deep .p-menubar {
     padding: 0.5rem 0.85rem;
+  }
+  :host ::ng-deep .p-menubar .p-menubar-start .greetings{
+    display: none;
+  }
+  :host ::ng-deep .p-menubar .p-menubar-end .p-button-link,
+  :host ::ng-deep .p-menubar .p-menubar-end .p-select .p-select-label {
+    font-size: 14px;
+  }
+  :host ::ng-deep .p-menubar .p-menubar-end .p-button-link{
+    font-size: 14px;
+  }
+  :host ::ng-deep .p-menubar .p-menubar-end{
+    gap: 10px;
   }
 }

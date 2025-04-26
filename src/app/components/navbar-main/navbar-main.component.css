@@ -15,3 +15,16 @@
 :host ::ng-deep .p-menubar .p-menubar-end .btn-login .p-button-label {
   color: #ffffff;
 }
+
+
+@media (max-device-width: 900px) {
+  :host ::ng-deep .p-menubar {
+    padding: 0.5rem 0.85rem;
+  }
+  :host ::ng-deep .p-menubar .p-menubar-start .title {
+    font-size: 18px;
+  }
+  :host ::ng-deep .p-menubar .p-menubar-end .btn-login .p-button-label{
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,11 @@
+.hotel-web{
+    margin-top: 7rem;
+}
+.hotel-web .label-recomendation{
+    font-weight: 500;
+}
+
+.row{
+    padding-left: 120px;
+    padding-right: 120px;
+}

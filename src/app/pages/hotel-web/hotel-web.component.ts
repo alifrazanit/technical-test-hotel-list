@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CardComponent } from '@components/card/card.component';
 import { NavbarMainComponent } from '@components/navbar-main/navbar-main.component';
 import { NavbarTopComponent } from '@components/navbar-top/navbar-top.component';
 import { SearchBoxComponent } from '@components/search-box/search-box.component';
@@ -8,7 +9,8 @@ import { SearchBoxComponent } from '@components/search-box/search-box.component'
   imports: [
     NavbarTopComponent,
     NavbarMainComponent,
-    SearchBoxComponent
+    SearchBoxComponent,
+    CardComponent
   ],
   templateUrl: './hotel-web.component.html',
   styleUrl: './hotel-web.component.css'
