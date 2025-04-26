@@ -38,3 +38,18 @@
     font-weight: bolder;
     font-size: 16px;
 }
+
+@media (max-device-width: 900px) {
+  :host ::ng-deep .p-card{
+    width: 250px;
+  }
+  :host ::ng-deep .p-card .p-card-header .image-container {
+    height: 170px;
+  }
+  :host ::ng-deep .p-card h1 {
+    font-size: 16px;
+  }
+  :host ::ng-deep .p-card p {
+    font-size: 14px;
+  }
+}

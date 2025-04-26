@@ -1,11 +1,17 @@
-.hotel-web{
-    margin-top: 7rem;
+.hotel-web {
+  margin-top: 7rem;
 }
-.hotel-web .label-recomendation{
-    font-weight: 500;
+.hotel-web .label-recomendation {
+  font-weight: 500;
 }
 
-.row{
-    padding-left: 120px;
-    padding-right: 120px;
+.row {
+  padding-left: 120px;
+  padding-right: 120px;
+}
+
+@media (max-device-width: 900px) {
+  .row {
+    padding: 0.5rem 0.85rem;
+  }
 }
