@@ -21,7 +21,28 @@ query GetHotels($orderFieldDirection: orderFieldDirection!, $orderByField: Strin
     description
   }
 }
+`;
 
+const SAVE_HOTEL = gql`
+  mutation Mutation($data: CreateHotel!) {
+    createHotel(data: $data) {
+      id
+      name
+      location
+      description
+    }
+  }
+`;
+
+const UPDATE_HOTEL = gql`
+  mutation UpdateHotel($updateHotelId: Int!, $data: UpdateHotel!) {
+    updateHotel(id: $updateHotelId, data: $data) {
+      id
+      name
+      location
+      description
+    }
+  }
 `;
 
 @Injectable({
@@ -33,6 +54,41 @@ export class HotelService {
     private apollo: Apollo
   ) { }
 
+  updateHotel(params: any) {
+    return this.apollo.mutate({
+      mutation: UPDATE_HOTEL,
+      variables: {
+        ...params
+      },
+      refetchQueries: [
+        {
+          query: GET_ALL_HOTELS,
+          variables: {
+            orderByField: 'id',
+            orderFieldDirection: 'ASC'
+          }
+        }
+      ]
+    })
+  }
+
+  saveHotel(params: any) {
+    return this.apollo.mutate({
+      mutation: SAVE_HOTEL,
+      variables: {
+        ...params
+      },
+      refetchQueries: [
+        {
+          query: GET_ALL_HOTELS,
+          variables: {
+            orderByField: 'id',
+            orderFieldDirection: 'ASC'
+          }
+        }
+      ]
+    })
+  }
 
   fetchAllHotel(params: any) {
     return this.apollo.watchQuery({

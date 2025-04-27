@@ -19,13 +19,13 @@
         <div class="col">
             <div class="flex flex-column gap-2">
                 <label for="location">Description</label>
-                <textarea rows="5" cols="30" pTextarea formControlName="description"></textarea>
+                <textarea rows="5" cols="30" pInputText formControlName="description"></textarea>
             </div>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <p-button label="Save" severity="success" (click)="onSave()"/>
+            <p-button [class.btn-update]="action === 'update'" (click)="onSave()">{{ action == 'update' ? 'Update Data' : 'Save Data'}}</p-button>
         </div>
     </div>
 </form>

@@ -13,6 +13,9 @@ import { UtilsService } from '@utils/utils.service';
 import { DialogModule, Dialog } from 'primeng/dialog';
 import { DialogService } from 'primeng/dynamicdialog';
 import { FormComponent } from './shared/form/form.component';
+import { action } from '@config/enum/Action.enum';
+import { Label } from '@config/Label';
+
 @Component({
   selector: 'app-hotel',
   imports: [
@@ -34,6 +37,7 @@ import { FormComponent } from './shared/form/form.component';
   styleUrl: './hotel.component.css'
 })
 export class HotelComponent implements OnInit, OnDestroy {
+  label = Label;
   private destroy$ = new Subject<void>();
 
   form: FormGroup = new FormGroup({});
@@ -59,7 +63,8 @@ export class HotelComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-
+    this.destroy$.next();
+    this.destroy$.complete();
   }
 
   initForm() {
@@ -114,19 +119,62 @@ export class HotelComponent implements OnInit, OnDestroy {
   }
 
   onDetail(row: any) {
-    console.log('row', row)
+    const ref = this.dialog.open(FormComponent, {
+      header: 'Form Hotel',
+      data: {
+        ...row,
+        action: action.update
+      },
+      closable: true
+    });
+    ref.onClose.subscribe((data: any) => {
+      if (data) {
+        const dataP = data.data;
+        const payload = {
+          location: dataP.location,
+          name: dataP.name,
+          description: dataP.description,
+        }
+        this.hotelService.updateHotel({
+          updateHotelId: dataP.id,
+          data: {
+            ...payload
+          }
+        }).subscribe(res => {
+          if (res) {
+            this.utils.showSuccessDialog(this.label.NOTIFICATION.SUCCESS_UPDATE)
+          }
+        })
+      }
+    })
   }
 
   onCreate() {
     const ref = this.dialog.open(FormComponent, {
       header: 'Form Hotel',
-      data: {},
+      data: {
+        action: action.create
+      },
       closable: true
     });
     ref.onClose.subscribe((data: any) => {
       if (data) {
-        console.log('DATA', data);
-       }
+        const dataP = data.data;
+        const payload = {
+          location: dataP.location,
+          name: dataP.name,
+          description: dataP.description,
+        }
+        this.hotelService.saveHotel({ data: payload }).subscribe(res => {
+          if (res) {
+            this.utils.showSuccessDialog(this.label.NOTIFICATION.SUCCESS_INPUT)
+          }
+        })
+      }
     });
+  }
+
+  onDelete(row: any){
+    
   }
 }

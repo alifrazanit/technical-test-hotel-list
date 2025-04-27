@@ -1,0 +1,4 @@
+:host ::ng-deep .btn-update .p-button{
+    background-color: #f39c12;
+    border: 1px solid #f39c12;
+}

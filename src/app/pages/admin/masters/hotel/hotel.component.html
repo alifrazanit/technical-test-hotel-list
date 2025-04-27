@@ -48,7 +48,7 @@
         <div class="row">
             <div class="col flex gap-2">
                 <p-button label="Find" severity="info" (click)="onFind()" />
-                <p-button label="Create New" severity="success" (click)="onCreate()"/>
+                <p-button label="Create New" severity="success" (click)="onCreate()" />
             </div>
         </div>
     </form>
@@ -66,7 +66,12 @@
         </ng-template>
         <ng-template #body let-data>
             <tr>
-                <td> <p-button label="Detail" [link]="true" (click)="onDetail(data)" /></td>
+                <td>
+                    <div class="flex g-1">
+                        <p-button label="Detail" [link]="true" (click)="onDetail(data)" />
+                        <p-button label="Delete" variant="outlined" severity="danger" (click)="onDelete(data)" />
+                    </div>
+                </td>
                 <td>{{ data.id }}</td>
                 <td>{{ data.name }}</td>
                 <td>{{ data.location }}</td>

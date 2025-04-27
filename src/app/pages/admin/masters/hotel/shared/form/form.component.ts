@@ -20,25 +20,44 @@ import { TextareaModule } from 'primeng/textarea';
   styleUrl: './form.component.css'
 })
 export class FormComponent implements OnInit {
-  form: FormGroup = new FormGroup({});
+  form!: FormGroup;
 
+  action: string = '';
   constructor(
     private utils: UtilsService,
     private ref: DynamicDialogRef,
     private config: DynamicDialogConfig
-  ) { }
+  ) {
+    this.initForm();
+  }
 
   ngOnInit(): void {
     let data = this.config.data;
+    this.action = data.action;
     this.initForm();
+
+    if (data.action === action.update) {
+      this.setForm(data)
+    }
+    
   }
 
   initForm() {
     this.form = new FormGroup({
+      id: new FormControl(''),
       name: new FormControl('', [Validators.required]),
       location: new FormControl('', [Validators.required]),
       description: new FormControl(''),
     });
+  }
+
+  setForm(data: any) {
+    this.form.setValue({
+      id: data.id,
+      name: data.name,
+      location: data.location,
+      description: data.description,
+    })
   }
 
   onSave() {
@@ -48,7 +67,7 @@ export class FormComponent implements OnInit {
     } else {
       const formData = this.form.value;
       this.ref.close({
-        action: action.create,
+        action: this.action,
         data: {
           ...formData
         }
