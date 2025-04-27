@@ -15,6 +15,7 @@ import { DialogService } from 'primeng/dynamicdialog';
 import { FormComponent } from './shared/form/form.component';
 import { action } from '@config/enum/Action.enum';
 import { Label } from '@config/Label';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-hotel',
@@ -31,7 +32,9 @@ import { Label } from '@config/Label';
   providers: [
     UtilsService,
     Dialog,
-    DialogService
+    DialogService,
+    ConfirmationService,
+    MessageService
   ],
   templateUrl: './hotel.component.html',
   styleUrl: './hotel.component.css'
@@ -174,7 +177,7 @@ export class HotelComponent implements OnInit, OnDestroy {
     });
   }
 
-  onDelete(row: any){
-    
+  onDelete(row: any, e: any) {
+    this.utils.showConfrimDialog(e);
   }
 }

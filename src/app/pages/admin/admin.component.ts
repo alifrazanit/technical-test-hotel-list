@@ -7,16 +7,20 @@ import { Drawer } from 'primeng/drawer';
 import { ButtonModule } from 'primeng/button';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { MenuItem } from 'primeng/api';
+import { ToastModule } from 'primeng/toast';
+import { ConfirmDialog } from 'primeng/confirmdialog';
 
 @Component({
   selector: 'app-admin',
   imports: [
     RouterOutlet,
+    ConfirmDialog,
     HeaderComponent,
     AvatarModule,
     DrawerModule,
     ButtonModule,
     PanelMenuModule,
+    ToastModule
   ],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.css'

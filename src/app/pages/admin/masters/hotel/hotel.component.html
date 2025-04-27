@@ -69,7 +69,7 @@
                 <td>
                     <div class="flex g-1">
                         <p-button label="Detail" [link]="true" (click)="onDetail(data)" />
-                        <p-button label="Delete" variant="outlined" severity="danger" (click)="onDelete(data)" />
+                        <p-button label="Delete" variant="outlined" severity="danger" (click)="onDelete(data, $event)" />
                     </div>
                 </td>
                 <td>{{ data.id }}</td>
