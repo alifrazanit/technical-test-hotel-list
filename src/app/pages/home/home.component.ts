@@ -8,6 +8,7 @@ import { HotelService } from 'src/app/services/hotel/hotel.service';
 import { Subject, takeUntil } from 'rxjs';
 import { CardModule } from 'primeng/card';
 import { ButtonModule } from 'primeng/button';
+import { RecommendationsComponent } from '@components/recommendations/recommendations.component';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +18,8 @@ import { ButtonModule } from 'primeng/button';
     SearchBoxComponent,
     FooterComponent,
     CardModule,
-    ButtonModule
+    ButtonModule,
+    RecommendationsComponent
   ],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
