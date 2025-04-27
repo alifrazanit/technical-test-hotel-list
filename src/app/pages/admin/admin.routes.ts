@@ -26,7 +26,7 @@ export const adminRoutes: Routes = [
             },
             {
                 path: '',
-                redirectTo: '/admin/dashboard',
+                redirectTo: '/dashboard',
                 pathMatch: 'full'
             }
         ]
