@@ -5,10 +5,49 @@ html,
 body {
   margin: 0;
   padding: 0;
-  background-color: #FFFFFF;
+  background-color: #ffffff;
 }
 body {
   font-family: "Roboto", sans-serif;
   color: #222f3e;
 }
 
+.p-dialog {
+  background-color: white !important;
+  color: #222f3e !important;
+}
+.p-dialog .p-dialog-close-button {
+  background-color: white !important;
+}
+
+.p-drawer {
+  color: #222f3e !important;
+  background-color: white !important;
+  padding: 5px 15px 15px 15px !important;
+}
+.p-drawer .title {
+  font-size: 1.5rem;
+}
+
+p-panelmenu {
+  width: 100%;
+}
+.p-panelmenu {
+  gap: 0 !important;
+}
+.p-panelmenu .p-panelmenu-header-content {
+  color: #222f3e !important;
+}
+.p-panelmenu .p-panelmenu-item-content {
+  color: #222f3e !important;
+}
+.p-panelmenu .p-panelmenu-panel {
+  background: white;
+  border: none;
+}
+.p-panelmenu .p-panelmenu-header:not(.p-disabled) .p-panelmenu-header-content:hover{
+  color: #222f3e !important;
+}
+.p-panelmenu .p-panelmenu-item:not(.p-disabled) > .p-panelmenu-item-content:hover{
+  color: #222f3e !important;
+}

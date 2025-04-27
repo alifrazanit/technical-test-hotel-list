@@ -16,6 +16,10 @@
   z-index: 1;
 }
 
+.search-box-container .p-error{
+  color: red;
+}
+
 :host ::ng-deep .search-box-container .p-card {
   position: absolute;
   bottom: -100px;

@@ -4,8 +4,8 @@
     </ng-template>
     <ng-template #end>
         <div class="flex items-center gap-2">
-            <p-button label="Login" severity="info" class="btn-login"/>
-            <p-button label="SignIn" variant="outlined" severity="success" class="btn-signin"/>
+            <p-button label="Login" severity="info" class="btn-login" (click)="login()"/>
+            <p-button label="SignIn" variant="outlined" severity="success" class="btn-signin" (click)="signIn()"/>
         </div>
     </ng-template>
 </p-menubar>

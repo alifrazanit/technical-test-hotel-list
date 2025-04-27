@@ -1,0 +1,18 @@
+<p-drawer #drawerRef [(visible)]="visible">
+    <ng-template #headless>
+        <div class="flex align-items-center justify-content-between">
+            <h1 class="title">Hotel List</h1>
+            <p-button icon="pi pi-times" [rounded]="true" severity="danger" [outlined]="true"
+                (click)="onCloseMenu($event)" />
+        </div>
+        <div class="card flex justify-center">
+            <p-panelmenu [model]="items" styleClass="w-full md:w-80" />
+        </div>
+    </ng-template>
+</p-drawer>
+<app-header (onOpenMenu)="onOpenMenu($event)" />
+<div class="row">
+    <div class="col">
+        <router-outlet />
+    </div>
+</div>

@@ -23,6 +23,8 @@
       "@components/*": ["src/app/components/*"],
       "@pages/*": ["src/app/pages/*"],
       "@template/*": ["src/app/template/*"],
+      "@utils/*": ["src/app/utils/*"],
+      "@config/*": ["src/app/config/*"],
     }
   },
   "angularCompilerOptions": {

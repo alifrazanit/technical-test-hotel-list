@@ -1,0 +1,19 @@
+:host ::ng-deep .p-menubar {
+  background: #ffffff;
+  border-radius: 0px;
+  color: #222f3e;
+  border: none !important;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+:host ::ng-deep .p-menubar .p-menubar-start .title {
+  margin: 0;
+  font-family: "Domine", serif;
+  font-size: 18px;
+}
+
+:host ::ng-deep .p-menubar .p-menubar-start .p-button{
+    background-color: white;
+    color: #222f3e;
+    border: none;
+}

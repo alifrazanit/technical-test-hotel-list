@@ -1,9 +1,19 @@
 import { Routes } from '@angular/router';
 import { NotFoundComponent } from '@pages/not-found/not-found.component';
-import { HotelRoutes } from '@pages/hotel-web/hotel-web.routes';
+import { HomeComponent } from '@pages/home/home.component';
 
 
 export const routes: Routes = [
-    { path: '', loadChildren: () => import('./pages/hotel-web/hotel-web.routes').then(c => c.HotelRoutes) },
-    { path: '**', component: NotFoundComponent }
+    { 
+        path: '', 
+        component: HomeComponent
+    },
+    {
+        path: 'admin',
+        loadChildren: () => import('./pages/admin/admin.routes').then(m => m.adminRoutes)
+    },
+    { 
+        path: '**', 
+        component: NotFoundComponent 
+    }
 ];

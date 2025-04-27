@@ -4,9 +4,9 @@
             <div class="col">
                 <form [formGroup]="form">
                     <div class="field">
-                        <label for="firstname1">Hotel or Destination</label>
-                        <p-select [options]="destination" formControlName="destination" [editable]="true"
-                            optionLabel="name" placeholder="Select a City" class="w-full md:w-56">
+                        <label for="destination">Hotel or Destination</label>
+                        <p-select [options]="destination" formControlName="destination" id="destination"
+                            [editable]="true" optionLabel="name" placeholder="Select a City" class="w-full md:w-56">
                             <ng-template #selectedItem let-selectedOption>
                                 @if(selectedOption){
                                 <div class="flex items-center gap-2">
@@ -26,13 +26,17 @@
                                 <i class="pi pi-map-marker"></i>
                             </ng-template>
                         </p-select>
+                        @if(form.get('destination')?.invalid && (form.get('destination')?.dirty ||
+                        form.get('destination')?.touched)){
+                        <small id="destination-help" class="p-error">Destination is required.</small>
+                        }
                     </div>
                 </form>
             </div>
         </div>
         <div class="row">
             <div class="col">
-                <p-button label="Find" severity="success" class="btn-filter"/>
+                <p-button label="Find" severity="success" class="btn-filter" (click)="onFind()" />
             </div>
         </div>
     </p-card>
