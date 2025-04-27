@@ -4,6 +4,9 @@
             <div class="flex flex-column gap-2">
                 <label for="hotel-name">Hotel Name</label>
                 <input pInputText id="hotel-name" aria-describedby="hotel-name-help" formControlName="name" />
+                @if(form.get('name')?.invalid && (form.get('name')?.dirty || form.get('name')?.touched)){
+                <small id="name-help" class="p-error">Hotel Name Field is required.</small>
+                }
             </div>
         </div>
     </div>
@@ -12,6 +15,10 @@
             <div class="flex flex-column gap-2">
                 <label for="location">Location</label>
                 <input pInputText id="location" aria-describedby="location-help" formControlName="location" />
+                @if(form.get('location')?.invalid && (form.get('location')?.dirty ||
+                form.get('location')?.touched)){
+                <small id="location-help" class="p-error">Location Field is required.</small>
+                }
             </div>
         </div>
     </div>
@@ -25,7 +32,8 @@
     </div>
     <div class="row">
         <div class="col">
-            <p-button [class.btn-update]="action === 'update'" (click)="onSave()">{{ action == 'update' ? 'Update Data' : 'Save Data'}}</p-button>
+            <p-button [class.btn-update]="action === 'update'" (click)="onSave()">{{ action == 'update' ? 'Update Data'
+                : 'Save Data'}}</p-button>
         </div>
     </div>
 </form>

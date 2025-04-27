@@ -15,7 +15,7 @@ import { DialogService } from 'primeng/dynamicdialog';
 import { FormComponent } from './shared/form/form.component';
 import { action } from '@config/enum/Action.enum';
 import { Label } from '@config/Label';
-
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 @Component({
   selector: 'app-hotel',
   imports: [
@@ -27,6 +27,7 @@ import { Label } from '@config/Label';
     SelectModule,
     RadioButtonModule,
     DialogModule,
+    ConfirmDialogModule
   ],
   providers: [
     UtilsService,
@@ -175,7 +176,10 @@ export class HotelComponent implements OnInit, OnDestroy {
     });
   }
 
-  onDelete(row: any, e: any) {
-    // this.utils.showConfrimDialog(e);
+  async onDelete(row: any, e: any) {
+    const confrim = await this.utils.showConfrimDeleteDialog(e);
+    if(confrim){
+
+    }
   }
 }

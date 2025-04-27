@@ -1,9 +1,7 @@
 import { Injectable } from '@angular/core';
 import { DialogService } from 'primeng/dynamicdialog';
 import { Label } from '@config/Label';
-import { ErrorModalComponent } from '@components/error-modal/error-modal.component';
-import { SuccessModalComponent } from '@components/success-modal/success-modal.component';
-// import { ConfirmationService, MessageService } from 'primeng/api';
+import { ConfirmationService, MessageService } from 'primeng/api';
 
 @Injectable({
   providedIn: 'root'
@@ -13,67 +11,75 @@ export class UtilsService {
 
   constructor(
     private dialog: DialogService,
-    // private confirmationService: ConfirmationService,
-    // private messageService: MessageService
+    private confirmationService: ConfirmationService,
+    private messageService: MessageService
   ) { }
 
   showErrorDialog(message: string) {
-    const ref = this.dialog.open(ErrorModalComponent, {
+    this.confirmationService.confirm({
+      message: message,
       header: this.label.NOTIFICATION.SYSTEM_NOTIF,
-      styleClass: 'default-modal error-modal',
-      data: {
-        message
+      icon: 'pi pi-exclamation-triangle',
+      rejectVisible: false,
+      acceptButtonProps: {
+        label: this.label.LABEL.OK,
+        severity: 'secondary',
+        outlined: true,
       },
-      closable: true
-    });
-    ref.onClose.subscribe((data: any) => {
-      if (data) { }
-    });
+    })
   }
 
   showSuccessDialog(message: string) {
-    const ref = this.dialog.open(SuccessModalComponent, {
+    this.confirmationService.confirm({
+      message: message,
       header: this.label.NOTIFICATION.SYSTEM_NOTIF,
-      styleClass: 'default-modal success-modal',
-      data: {
-        message
+      icon: 'pi pi-check-circle',
+      rejectVisible: false,
+      acceptButtonProps: {
+        label: this.label.LABEL.OK,
+        severity: 'success',
+        outlined: true,
       },
-      closable: true
-    });
-    ref.onClose.subscribe((data: any) => {
-      if (data) { }
-    });
+    })
   }
 
-  // showConfrimDialog(event: any) {
-  //   this.confirmationService.confirm({
-  //     target: event.target as EventTarget,
-  //     message: 'Are you sure that you want to proceed?',
-  //     header: 'Confirmation',
-  //     closable: true,
-  //     closeOnEscape: true,
-  //     icon: 'pi pi-exclamation-triangle',
-  //     rejectButtonProps: {
-  //       label: 'Cancel',
-  //       severity: 'secondary',
-  //       outlined: true,
-  //     },
-  //     acceptButtonProps: {
-  //       label: 'Save',
-  //     },
-  //     accept: () => {
-  //       this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' });
-  //     },
-  //     reject: () => {
-  //       this.messageService.add({
-  //         severity: 'error',
-  //         summary: 'Rejected',
-  //         detail: 'You have rejected',
-  //         life: 3000,
-  //       });
-  //     },
-  //   })
-  // }
+  showConfrimDeleteDialog(event: any) {
+    return new Promise((resolve) => {
+      this.confirmationService.confirm({
+        target: event.target as EventTarget,
+        message: this.label.MESSAGES.CONFRIM_DELETE,
+        header: this.label.LABEL.DELETE_CONFRIM,
+        closable: true,
+        closeOnEscape: true,
+        icon: 'pi pi-exclamation-triangle',
+        rejectButtonProps: {
+          label: 'Cancel',
+          severity: 'secondary',
+          outlined: true,
+        },
+        acceptButtonProps: {
+          label: 'Yes',
+          severity: 'danger',
+          outlined: true,
+        },
+        accept: () => {
+          this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' });
+          resolve(true)
+        },
+        reject: () => {
+          this.messageService.add({
+            severity: 'error',
+            summary: 'Rejected',
+            detail: 'You have rejected',
+            life: 3000,
+          });
+          resolve(false)
+
+        },
+      })
+    })
+
+  }
 
 
 }

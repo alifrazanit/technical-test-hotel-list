@@ -35,14 +35,14 @@ export class AdminComponent implements OnInit {
     this.items = [
       {
         label: 'Dashboard',
-        routerLink: '/admin/dashboard'
+        routerLink: '/dashboard'
       },
       {
         label: 'Master',
         items: [
           {
             label: 'Hotel',
-            routerLink: '/admin/masters/hotel'
+            routerLink: '/masters/hotel'
           },
         ]
       }

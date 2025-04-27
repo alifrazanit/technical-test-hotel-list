@@ -1,8 +1,0 @@
-:host ::ng-deep .p-card{
-    background: white;
-    color: black;
-    box-shadow: none;
-}
-:host ::ng-deep .p-card .p-card-body{
-    padding: 0;
-}

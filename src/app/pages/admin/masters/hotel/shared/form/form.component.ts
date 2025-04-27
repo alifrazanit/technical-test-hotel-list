@@ -39,7 +39,7 @@ export class FormComponent implements OnInit {
     if (data.action === action.update) {
       this.setForm(data)
     }
-    
+
   }
 
   initForm() {
@@ -63,7 +63,7 @@ export class FormComponent implements OnInit {
   onSave() {
     if (this.form.invalid) {
       this.form.markAllAsTouched();
-      return this.utils.showErrorDialog('Input Mandatory Fields Please')
+      this.utils.showErrorDialog('Input Mandatory Fields Please',)
     } else {
       const formData = this.form.value;
       this.ref.close({
