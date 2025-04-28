@@ -45,6 +45,17 @@ const UPDATE_HOTEL = gql`
   }
 `;
 
+const DELETE_HOTEL = gql`
+  mutation DeleteHotel($deleteHotelId: Int!) {
+    deleteHotel(id: $deleteHotelId) {
+      id
+      name
+      location
+      description
+    }
+  }
+`;
+
 @Injectable({
   providedIn: 'root'
 })
@@ -75,6 +86,24 @@ export class HotelService {
   saveHotel(params: any) {
     return this.apollo.mutate({
       mutation: SAVE_HOTEL,
+      variables: {
+        ...params
+      },
+      refetchQueries: [
+        {
+          query: GET_ALL_HOTELS,
+          variables: {
+            orderByField: 'id',
+            orderFieldDirection: 'ASC'
+          }
+        }
+      ]
+    })
+  }
+
+  deleteHotel(params: any) {
+    return this.apollo.mutate({
+      mutation: DELETE_HOTEL,
       variables: {
         ...params
       },

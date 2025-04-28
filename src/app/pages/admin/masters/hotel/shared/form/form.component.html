@@ -5,7 +5,13 @@
                 <label for="hotel-name">Hotel Name</label>
                 <input pInputText id="hotel-name" aria-describedby="hotel-name-help" formControlName="name" />
                 @if(form.get('name')?.invalid && (form.get('name')?.dirty || form.get('name')?.touched)){
-                <small id="name-help" class="p-error">Hotel Name Field is required.</small>
+                    @if(form.get('name')?.errors?.['maxlength']){
+                    <small id="name-help" class="p-error">
+                        Hotel Name cannot longer than {{form.get('name')?.getError('maxlength').requiredLength}}.
+                    </small>
+                    } @else {
+                    <small id="name-help" class="p-error">Hotel Name Field is required.</small>
+                    }
                 }
             </div>
         </div>

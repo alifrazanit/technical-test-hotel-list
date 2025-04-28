@@ -3,6 +3,16 @@ import { DialogService } from 'primeng/dynamicdialog';
 import { Label } from '@config/Label';
 import { ConfirmationService, MessageService } from 'primeng/api';
 
+
+export enum severityEnum {
+  success = 'success',
+  info = 'info',
+  warn = 'warn',
+  danger = 'error',
+  secondary = 'secondary',
+  contrast = 'contrast',
+}
+
 @Injectable({
   providedIn: 'root'
 })
@@ -43,6 +53,10 @@ export class UtilsService {
     })
   }
 
+  showMessage(severity: severityEnum, message: any) {
+    this.messageService.add({ severity: severity, summary: 'Confirmed', detail: message, life: 3000 });
+  }
+
   showConfrimDeleteDialog(event: any) {
     return new Promise((resolve) => {
       this.confirmationService.confirm({
@@ -63,18 +77,10 @@ export class UtilsService {
           outlined: true,
         },
         accept: () => {
-          this.messageService.add({ severity: 'info', summary: 'Confirmed', detail: 'You have accepted' });
           resolve(true)
         },
         reject: () => {
-          this.messageService.add({
-            severity: 'error',
-            summary: 'Rejected',
-            detail: 'You have rejected',
-            life: 3000,
-          });
           resolve(false)
-
         },
       })
     })

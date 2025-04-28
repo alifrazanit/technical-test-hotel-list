@@ -45,7 +45,7 @@ export class FormComponent implements OnInit {
   initForm() {
     this.form = new FormGroup({
       id: new FormControl(''),
-      name: new FormControl('', [Validators.required]),
+      name: new FormControl('', [Validators.required, Validators.maxLength(50)]),
       location: new FormControl('', [Validators.required]),
       description: new FormControl(''),
     });

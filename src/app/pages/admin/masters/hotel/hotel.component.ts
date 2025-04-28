@@ -9,7 +9,7 @@ import { HotelService } from 'src/app/services/hotel/hotel.service';
 import { Subject, takeUntil } from 'rxjs';
 import { SelectModule } from 'primeng/select';
 import { RadioButtonModule } from 'primeng/radiobutton';
-import { UtilsService } from '@utils/utils.service';
+import { UtilsService, severityEnum } from '@utils/utils.service';
 import { DialogModule, Dialog } from 'primeng/dialog';
 import { DialogService } from 'primeng/dynamicdialog';
 import { FormComponent } from './shared/form/form.component';
@@ -179,7 +179,14 @@ export class HotelComponent implements OnInit, OnDestroy {
   async onDelete(row: any, e: any) {
     const confrim = await this.utils.showConfrimDeleteDialog(e);
     if(confrim){
-
+      const params = {
+        deleteHotelId: row.id
+      };
+      this.hotelService.deleteHotel(params).subscribe(res => {
+        if (res) {
+          this.utils.showMessage(severityEnum.danger, this.label.NOTIFICATION.SUCCESS_DELETE)
+        }
+      })
     }
   }
 }
