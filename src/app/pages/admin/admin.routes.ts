@@ -8,19 +8,19 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 export const adminRoutes: Routes = [
     {
         path: '',
-        component: AdminComponent,
+        loadComponent: () => import('./admin.component').then(m => m.AdminComponent),
         children: [
             {
                 path: 'dashboard',
-                component: DashboardComponent,
+                loadComponent: () => import('./dashboard/dashboard.component').then(m => m.DashboardComponent)
             },
             {
                 path: 'masters',
-                component: MastersComponent,
+                loadComponent: () => import('./masters/masters.component').then(m => m.MastersComponent),
                 children: [
                     {
                         path: 'hotel',
-                        component: HotelComponent
+                        loadComponent: () => import('./masters/hotel/hotel.component').then(m => m.HotelComponent),
                     }
                 ]
             },
