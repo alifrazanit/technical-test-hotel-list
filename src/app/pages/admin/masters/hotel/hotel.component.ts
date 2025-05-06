@@ -32,11 +32,10 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
   providers: [
     UtilsService,
     Dialog,
-    DialogService,
-  
+    DialogService
   ],
   templateUrl: './hotel.component.html',
-  styleUrl: './hotel.component.css'
+  styleUrl: './hotel.component.css',
 })
 export class HotelComponent implements OnInit, OnDestroy {
   label = Label;
@@ -44,7 +43,7 @@ export class HotelComponent implements OnInit, OnDestroy {
 
   form: FormGroup = new FormGroup({});
   dataTable: any[] = [];
-  orderByField: any[] = [
+  orderByField = [
     { id: 1, code: 'id', label: 'ID' },
     { id: 2, code: 'name', label: 'Name' },
   ];
@@ -142,11 +141,15 @@ export class HotelComponent implements OnInit, OnDestroy {
           data: {
             ...payload
           }
-        }).subscribe(res => {
-          if (res) {
-            this.utils.showSuccessDialog(this.label.NOTIFICATION.SUCCESS_UPDATE)
-          }
         })
+          .pipe(
+            takeUntil(this.destroy$)
+          )
+          .subscribe(res => {
+            if (res) {
+              this.utils.showSuccessDialog(this.label.NOTIFICATION.SUCCESS_UPDATE)
+            }
+          })
       }
     })
   }
@@ -178,7 +181,7 @@ export class HotelComponent implements OnInit, OnDestroy {
 
   async onDelete(row: any, e: any) {
     const confrim = await this.utils.showConfrimDeleteDialog(e);
-    if(confrim){
+    if (confrim) {
       const params = {
         deleteHotelId: row.id
       };
